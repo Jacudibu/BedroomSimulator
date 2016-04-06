@@ -60,6 +60,9 @@ public class Child : NetworkObject
         if (totalSocks <= 2)
         {
             Debug.Log("Q_Q");
+
+            if (totalSocks == 0)
+                GameManager.singleton.GameOver();
         }
     }
 }

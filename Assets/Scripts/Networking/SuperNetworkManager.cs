@@ -150,7 +150,14 @@ public class SuperNetworkManager : NetworkManager
         if (conn.connectionId == connectionID)
             player = (GameObject)GameObject.Instantiate(prefab_player_child);
         else
-            player = (GameObject)GameObject.Instantiate(prefab_player_monster);
+        {
+            Vector3 pos = new Vector3();
+            pos.x = Random.Range(-9f, 9f);
+            pos.y = prefab_player_monster.transform.position.y;
+            pos.z = Random.Range(-9f, 9f);
+
+            player = (GameObject)GameObject.Instantiate(prefab_player_monster, pos, prefab_player_monster.transform.rotation);
+        }
 
         NetworkServer.SpawnWithClientAuthority(player, conn);
 

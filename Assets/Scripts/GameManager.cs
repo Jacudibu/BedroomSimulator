@@ -6,8 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public GameObject MonsterCamera;
 
+    public static GameManager singleton;
+
     void Start ()
     {
+        singleton = this;
+
 	    if (SuperNetworkManager.isServer)
         {
             InitHost();
@@ -27,6 +31,14 @@ public class GameManager : MonoBehaviour
     void InitClient()   
     {
         MonsterCamera.SetActive(true);
+    }
+
+    public void GameOver()
+    {
+        if (SuperNetworkManager.isServer)
+            SuperNetworkManager.singleton.StopHost();
+        else
+            SuperNetworkManager.singleton.StopClient();
     }
 
     void OnDestroy()
