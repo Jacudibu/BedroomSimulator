@@ -38,27 +38,21 @@ public class Child : NetworkObject
     {
         base.Update();
 
-        //if (!hasAuthority)
-        //    return;
-       
-        // Check if we are looking on the bad guy!
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 100f))
-        {
-            if (hit.collider.CompareTag("Player"))
-            {
-                Debug.Log("I know what you did last summer!");
-            }
-        }
+        if (!hasAuthority)
+            return;
+
+        transform.Rotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0f);
 	}
 
     [ClientRpc] public void RpcSockWasSnatched()
     {
+        // #TODO:
         Debug.Log("I cry everytime");
         totalSocks--;
 
         if (totalSocks <= 2)
         {
+            // #TODO:
             Debug.Log("Q_Q");
 
             if (totalSocks == 0)

@@ -157,6 +157,9 @@ public class SuperNetworkManager : NetworkManager
             pos.z = Random.Range(-9f, 9f);
 
             player = (GameObject)GameObject.Instantiate(prefab_player_monster, pos, prefab_player_monster.transform.rotation);
+
+            // #TODO:
+            Debug.Log("You can hear something entering the roooooom~!");
         }
 
         NetworkServer.SpawnWithClientAuthority(player, conn);
@@ -168,6 +171,13 @@ public class SuperNetworkManager : NetworkManager
     public override void OnServerDisconnect(NetworkConnection conn)
     {
         base.OnServerDisconnect(conn);
+
+        if (conn.connectionId != connectionID)
+        {
+            // #TODO:
+            Debug.Log("Something ran away....");
+            NetworkServer.Destroy(FindObjectOfType<Monster>().gameObject);
+        }
     }
 
     public override void OnServerError(NetworkConnection conn, int errorCode)

@@ -65,8 +65,9 @@ public class NetworkObject : NetworkBehaviour
     // ----------------------------------------
 
     void SetOwnerConnectionID()
-    {
-        CmdSetOwnerConnectionID(SuperNetworkManager.connectionID);
+    { 
+        if (SuperNetworkManager.isConnected)
+            CmdSetOwnerConnectionID(SuperNetworkManager.connectionID);
     }
 
     [Command] void CmdSetOwnerConnectionID(int id)
