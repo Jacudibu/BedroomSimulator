@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject MonsterCamera;
 
-	void Start ()
+    void Start ()
     {
 	    if (SuperNetworkManager.isServer)
         {
@@ -20,17 +21,12 @@ public class GameManager : MonoBehaviour
 
     void InitHost()
     {
-        MonsterCamera.SetActive(false);
-        UnityEngine.VR.VRSettings.enabled = true;
-        UnityEngine.VR.VRSettings.loadedDevice = UnityEngine.VR.VRDeviceType.Oculus;     
+
     }
 
-    void InitClient()
+    void InitClient()   
     {
         MonsterCamera.SetActive(true);
-        // Disable all "Main Cameras", the only main cam is the player with Oculus
-        foreach (GameObject camObject in GameObject.FindGameObjectsWithTag("MainCamera"))
-            camObject.GetComponent<Camera>().enabled = false;
     }
 
     void OnDestroy()

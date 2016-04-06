@@ -11,6 +11,8 @@ public class SuperNetworkManager : NetworkManager
     private static int _connectionID;
     private static NetworkClient _networkClient;
 
+    private bool didInit;
+
     // --------------------
     // -- Static Getters --
     // --------------------
@@ -23,6 +25,9 @@ public class SuperNetworkManager : NetworkManager
     public static bool isConnected { get { return _isConnected; } }
     public static int connectionID { get { return _connectionID; } }
     public static NetworkClient networkClient { get { return _networkClient; } }
+
+    [SerializeField] GameObject prefab_player_monster;
+    [SerializeField] GameObject prefab_player_child;
 
     // ---------------
     // -- Singleton --
@@ -91,6 +96,8 @@ public class SuperNetworkManager : NetworkManager
 
         _isServer = true;
         _isConnected = true;
+
+
     }
 
     public override void OnStopServer()
@@ -108,6 +115,7 @@ public class SuperNetworkManager : NetworkManager
         _isServer = true;
         _isClient = true;
         _isConnected = true;
+
     }
 
     public override void OnStopHost()
@@ -123,10 +131,31 @@ public class SuperNetworkManager : NetworkManager
     {
         base.OnServerConnect(conn);
 
+
         // Send the connectionID to the Client.
         MessageWithInt msg = new MessageWithInt();
         msg.value = conn.connectionId;
         NetworkServer.SendToClient(conn.connectionId, (short)NetworkMessageType.personalConnectionID, msg);
+
+        if (!didInit) // Start Host calls this twice, but we only want to spawn something once!
+            StartCoroutine(SpawnPlayerObject(conn));
+    }
+
+    IEnumerator SpawnPlayerObject(NetworkConnection conn)
+    {
+        didInit = true;
+        yield return new WaitForSeconds(0.2f);
+
+        GameObject player;
+        if (conn.connectionId == connectionID)
+            player = (GameObject)GameObject.Instantiate(prefab_player_child);
+        else
+            player = (GameObject)GameObject.Instantiate(prefab_player_monster);
+
+        NetworkServer.SpawnWithClientAuthority(player, conn);
+
+        yield return new WaitForSeconds(0.2f);
+        didInit = false;
     }
 
     public override void OnServerDisconnect(NetworkConnection conn)

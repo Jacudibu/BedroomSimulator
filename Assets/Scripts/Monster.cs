@@ -6,36 +6,17 @@ public class Monster : NetworkObject
 
 	public override void Start ()
     {
-        if (!SuperNetworkManager.isServer)
-        {
-            // Player: Monster
-            if (hasAuthority)
-            {
-                // Script is attached on Monster
-                base.Start();
-            }
-            else
-            {
-                // Script is attached on Child
-                enabled = false;
-            }
-        }
-        else
-        {
-            // Player: Child
-            if (hasAuthority)
-            {
-                // Script is attached on Child
-                enabled = false;
-            }
-        }
+        base.Start();
     }
 	
 	public override void Update ()
     {
+        base.Update();
+
         if (!hasAuthority)
             return;
 
-        transform.Translate((Vector3.right * Input.GetAxis("Horizontal") + Vector3.up * Input.GetAxis("Vertical")) * Time.deltaTime);
+        transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime);
+        transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * Time.deltaTime);
 	}
 }

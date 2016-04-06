@@ -7,41 +7,17 @@ public class Child : NetworkObject
 
 	override public void Start ()
     {
-        if (SuperNetworkManager.isServer)
-        {
-            // Player: Child
+        base.Start(); 
 
-            if (hasAuthority)
-            {
-                // -> Script attached to Child
-                base.Start();
-                GetComponentInChildren<AudioListener>().enabled = true;
-                GetComponentInChildren<Camera>().enabled = true;
-                transform.position = transform.position + Vector3.up * height;
-            }
-            
-        }
-        else
+        if (!hasAuthority)
         {
-            // Player: Monster
-            if (hasAuthority)
-            {
-                // -> Script attached to monster
-                GetComponentInChildren<Light>().enabled = false;
-                GetComponentInChildren<AudioListener>().enabled = false;
-                enabled = false;
-            }
-            else
-            {
-                // -> Script attached to Child
-                // base.Start();
-                // transform.position = transform.position + Vector3.up * height;
-            }
+            GetComponent<Camera>().enabled = false;
+            GetComponent<AudioListener>().enabled = false;
         }
     }
 
     override public void Update ()
     {
-	    
+        base.Update();
 	}
 }
