@@ -59,4 +59,21 @@ public class Child : NetworkObject
                 GameManager.singleton.GameOver();
         }
     }
+
+    public void StartGame()
+    {
+        StartCoroutine(SetFlashlight(true, 1.5f));
+    }
+
+    IEnumerator SetFlashlight(bool status, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // #TODO: Play flashlight Sound here
+
+        foreach (Light light in GetComponentsInChildren<Light>())
+        {
+            light.enabled = status;
+        }
+    }
 }
