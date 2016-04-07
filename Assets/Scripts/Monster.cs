@@ -12,14 +12,20 @@ public class Monster : NetworkObject
     public AudioClip heartbeatSound;
     public AudioClip eatSound;
 
-    private MeshRenderer rend;
+    private SkinnedMeshRenderer rend;
     private Material mat;
+    private Animator animator;
+
+    Vector3 lastPos;
 
     public override void Start ()
     {
         base.Start();
 
-        rend = GetComponent<MeshRenderer>();
+        lastPos = transform.position;
+
+        animator = GetComponentInChildren<Animator>();
+        rend = GetComponentInChildren<SkinnedMeshRenderer>();
         mat = rend.material;
 
         audioSource = GetComponent<AudioSource>();
@@ -35,11 +41,21 @@ public class Monster : NetworkObject
     {
         base.Update();
 
+        animator.SetFloat("Speed", (transform.position - lastPos).magnitude);
+        lastPos = transform.position;
+
         if (!hasAuthority || eating)
             return;
 
-        transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * speed);
-        transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * Time.deltaTime * speed);
+        Vector3 movement = Vector3.zero;
+        movement += Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        movement += Vector3.forward * Input.GetAxis("Vertical") * Time.deltaTime * speed;
+
+        if (movement == Vector3.zero)
+            return;
+
+        GetComponent<Rigidbody>().MovePosition(transform.position + movement);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(movement), Time.deltaTime * 5);
 	}
 
     public void EatSock()
@@ -55,19 +71,20 @@ public class Monster : NetworkObject
 
     IEnumerator FlashCoroutine()
     {
-        yield return SetVisibility(0.4f, 10f);
-        yield return SetVisibility(0f, 10f);
+        yield return SetVisibility(0.4f, 6f);
+        yield return SetVisibility(0f, 6f);
     }
 
     IEnumerator EatSockCoroutine()
     {
         eating = true;
-        yield return SetVisibility(1f);
+        yield return SetVisibility(1f, 5f);
 
         audioSource.PlayOneShot(eatSound);
-        // #TODO: Play eating Animation
+        animator.SetTrigger("Bite");
+        yield return new WaitForSeconds(0.8f);
 
-        yield return SetVisibility(0f);
+        yield return SetVisibility(0f, 5f);
         eating = false;
 
     }
@@ -104,7 +121,7 @@ public class Monster : NetworkObject
 
             beatcounter++;
 
-            if (beatcounter > Child.currentSocks * 1.5f)
+            if (beatcounter > Child.currentSocks * 1.2f)
             {
                 Flash();
                 beatcounter = 0;

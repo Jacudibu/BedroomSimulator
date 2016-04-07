@@ -31,9 +31,10 @@ public class Child : NetworkObject
                 
                 GameObject sock = (GameObject)GameObject.Instantiate(sockPrefab, pos, Random.rotation);
                 NetworkServer.Spawn(sock);
-                currentSocks++;
             }
         }
+
+        currentSocks = totalSocks;
     }
 
     override public void Update ()

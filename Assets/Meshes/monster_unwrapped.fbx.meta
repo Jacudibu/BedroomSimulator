@@ -95,11 +95,461 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Monster_Armature|angry
+      takeName: Monster_Armature|angry
+      firstFrame: 0
+      lastFrame: 59
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Monster
+        weight: 1
+      - path: Monster_Armature
+        weight: 1
+      - path: Monster_Armature/Master
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.L
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.L/Arm_Handle.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.R
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.R/Arm_Handle.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Body
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.L
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.L/Arm.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.R
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.R/Arm.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_bottom
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_bottom/Mouth_bottom_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_top
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_top/Mouth_top_end
+        weight: 1
+      - path: Monster_Armature/Master/Body_SquashHandle
+        weight: 1
+      - path: Monster_Armature/Master/Body_SquashHandle/Body_SquashHandle_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot.L
+        weight: 1
+      - path: Monster_Armature/Master/Foot.L/Foot.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot.R
+        weight: 1
+      - path: Monster_Armature/Master/Foot.R/Foot.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.L
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.L/Foot_Handle.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.R
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.R/Foot_Handle.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_bottom_handle
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_bottom_handle/Mouth_bottom_handle_end
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_top_handle
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_top_handle/Mouth_top_handle_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Monster_Armature|bite
+      takeName: Monster_Armature|bite
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Monster
+        weight: 1
+      - path: Monster_Armature
+        weight: 1
+      - path: Monster_Armature/Master
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.L
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.L/Arm_Handle.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.R
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.R/Arm_Handle.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Body
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.L
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.L/Arm.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.R
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.R/Arm.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_bottom
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_bottom/Mouth_bottom_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_top
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_top/Mouth_top_end
+        weight: 1
+      - path: Monster_Armature/Master/Body_SquashHandle
+        weight: 1
+      - path: Monster_Armature/Master/Body_SquashHandle/Body_SquashHandle_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot.L
+        weight: 1
+      - path: Monster_Armature/Master/Foot.L/Foot.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot.R
+        weight: 1
+      - path: Monster_Armature/Master/Foot.R/Foot.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.L
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.L/Foot_Handle.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.R
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.R/Foot_Handle.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_bottom_handle
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_bottom_handle/Mouth_bottom_handle_end
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_top_handle
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_top_handle/Mouth_top_handle_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Monster_Armature|idle
+      takeName: Monster_Armature|idle
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Monster
+        weight: 1
+      - path: Monster_Armature
+        weight: 1
+      - path: Monster_Armature/Master
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.L
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.L/Arm_Handle.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.R
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.R/Arm_Handle.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Body
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.L
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.L/Arm.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.R
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.R/Arm.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_bottom
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_bottom/Mouth_bottom_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_top
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_top/Mouth_top_end
+        weight: 1
+      - path: Monster_Armature/Master/Body_SquashHandle
+        weight: 1
+      - path: Monster_Armature/Master/Body_SquashHandle/Body_SquashHandle_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot.L
+        weight: 1
+      - path: Monster_Armature/Master/Foot.L/Foot.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot.R
+        weight: 1
+      - path: Monster_Armature/Master/Foot.R/Foot.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.L
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.L/Foot_Handle.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.R
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.R/Foot_Handle.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_bottom_handle
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_bottom_handle/Mouth_bottom_handle_end
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_top_handle
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_top_handle/Mouth_top_handle_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Monster_Armature|chew
+      takeName: Monster_Armature|chew
+      firstFrame: 0
+      lastFrame: 43
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Monster
+        weight: 1
+      - path: Monster_Armature
+        weight: 1
+      - path: Monster_Armature/Master
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.L
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.L/Arm_Handle.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.R
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.R/Arm_Handle.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Body
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.L
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.L/Arm.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.R
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.R/Arm.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_bottom
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_bottom/Mouth_bottom_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_top
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_top/Mouth_top_end
+        weight: 1
+      - path: Monster_Armature/Master/Body_SquashHandle
+        weight: 1
+      - path: Monster_Armature/Master/Body_SquashHandle/Body_SquashHandle_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot.L
+        weight: 1
+      - path: Monster_Armature/Master/Foot.L/Foot.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot.R
+        weight: 1
+      - path: Monster_Armature/Master/Foot.R/Foot.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.L
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.L/Foot_Handle.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.R
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.R/Foot_Handle.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_bottom_handle
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_bottom_handle/Mouth_bottom_handle_end
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_top_handle
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_top_handle/Mouth_top_handle_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Monster_Armature|walk
+      takeName: Monster_Armature|walk
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Monster
+        weight: 1
+      - path: Monster_Armature
+        weight: 1
+      - path: Monster_Armature/Master
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.L
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.L/Arm_Handle.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.R
+        weight: 1
+      - path: Monster_Armature/Master/Arm_Handle.R/Arm_Handle.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Body
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.L
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.L/Arm.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.R
+        weight: 1
+      - path: Monster_Armature/Master/Body/Arm.R/Arm.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_bottom
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_bottom/Mouth_bottom_end
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_top
+        weight: 1
+      - path: Monster_Armature/Master/Body/Mouth_top/Mouth_top_end
+        weight: 1
+      - path: Monster_Armature/Master/Body_SquashHandle
+        weight: 1
+      - path: Monster_Armature/Master/Body_SquashHandle/Body_SquashHandle_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot.L
+        weight: 1
+      - path: Monster_Armature/Master/Foot.L/Foot.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot.R
+        weight: 1
+      - path: Monster_Armature/Master/Foot.R/Foot.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.L
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.L/Foot_Handle.L_end
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.R
+        weight: 1
+      - path: Monster_Armature/Master/Foot_Handle.R/Foot_Handle.R_end
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_bottom_handle
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_bottom_handle/Mouth_bottom_handle_end
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_top_handle
+        weight: 1
+      - path: Monster_Armature/Master/Mouth_top_handle/Mouth_top_handle_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 10
+    globalScale: 0.2
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
