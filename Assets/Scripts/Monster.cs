@@ -5,6 +5,7 @@ public class Monster : NetworkObject
 {
 
     public float speed = 5f;
+    public AudioClip heartbeatSound;
 
 	public override void Start ()
     {
@@ -14,6 +15,8 @@ public class Monster : NetworkObject
 
         // Tell the child it's about time to wake up
         StartCoroutine(WakeChildUp());
+
+        StartCoroutine(PlayHeartbeats());
     }
 	
 	public override void Update ()
@@ -26,6 +29,16 @@ public class Monster : NetworkObject
         transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * speed);
         transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * Time.deltaTime * speed);
 	}
+
+    IEnumerator PlayHeartbeats()
+    {
+        AudioSource source = GetComponent<AudioSource>();
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            source.PlayOneShot(heartbeatSound);
+        }
+    }
 
     IEnumerator WakeChildUp()
     {
