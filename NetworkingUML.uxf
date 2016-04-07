@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>280</x>
-      <y>150</y>
+      <y>220</y>
       <w>250</w>
       <h>210</h>
     </coordinates>
@@ -29,7 +29,7 @@
     <id>Relation</id>
     <coordinates>
       <x>200</x>
-      <y>350</y>
+      <y>420</y>
       <w>220</w>
       <h>130</h>
     </coordinates>
@@ -40,7 +40,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>100</x>
-      <y>460</y>
+      <y>530</y>
       <w>210</w>
       <h>90</h>
     </coordinates>
@@ -56,7 +56,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>490</x>
-      <y>460</y>
+      <y>530</y>
       <w>210</w>
       <h>90</h>
     </coordinates>
@@ -71,7 +71,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>280</x>
-      <y>90</y>
+      <y>160</y>
       <w>250</w>
       <h>30</h>
     </coordinates>
@@ -82,7 +82,7 @@
     <id>Relation</id>
     <coordinates>
       <x>390</x>
-      <y>110</y>
+      <y>180</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -93,7 +93,7 @@
     <id>Relation</id>
     <coordinates>
       <x>390</x>
-      <y>350</y>
+      <y>420</y>
       <w>230</w>
       <h>130</h>
     </coordinates>
@@ -104,7 +104,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>350</x>
-      <y>460</y>
+      <y>530</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -115,7 +115,7 @@
     <id>Relation</id>
     <coordinates>
       <x>390</x>
-      <y>350</y>
+      <y>420</y>
       <w>30</w>
       <h>130</h>
     </coordinates>
@@ -126,7 +126,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>730</x>
-      <y>90</y>
+      <y>160</y>
       <w>220</w>
       <h>30</h>
     </coordinates>
@@ -137,7 +137,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>720</x>
-      <y>150</y>
+      <y>220</y>
       <w>240</w>
       <h>200</h>
     </coordinates>
@@ -160,7 +160,7 @@ _+ connectionID : int_
     <id>Relation</id>
     <coordinates>
       <x>830</x>
-      <y>110</y>
+      <y>180</y>
       <w>30</w>
       <h>60</h>
     </coordinates>

@@ -148,15 +148,15 @@ public class SuperNetworkManager : NetworkManager
 
         GameObject player;
         if (conn.connectionId == connectionID)
-            player = (GameObject)GameObject.Instantiate(prefabPlayerMonster);
+            player = (GameObject)GameObject.Instantiate(prefabPlayerChild);
         else
         {
             Vector3 pos = new Vector3();
             pos.x = Random.Range(-9f, 9f);
-            pos.y = prefabPlayerChild.transform.position.y;
+            pos.y = prefabPlayerMonster.transform.position.y;
             pos.z = Random.Range(-9f, 9f);
 
-            player = (GameObject)GameObject.Instantiate(prefabPlayerChild, pos, prefabPlayerChild.transform.rotation);
+            player = (GameObject)GameObject.Instantiate(prefabPlayerMonster, pos, prefabPlayerMonster.transform.rotation);
 
             // #TODO:
             Debug.Log("You can hear something entering the roooooom~!");
