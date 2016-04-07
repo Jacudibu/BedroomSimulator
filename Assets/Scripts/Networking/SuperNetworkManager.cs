@@ -26,8 +26,8 @@ public class SuperNetworkManager : NetworkManager
     public static int connectionID { get { return _connectionID; } }
     public static NetworkClient networkClient { get { return _networkClient; } }
 
-    [SerializeField] GameObject prefab_player_monster;
-    [SerializeField] GameObject prefab_player_child;
+    [SerializeField] GameObject prefabPlayerChild;
+    [SerializeField] GameObject prefabPlayerMonster;
 
     // ---------------
     // -- Singleton --
@@ -148,15 +148,15 @@ public class SuperNetworkManager : NetworkManager
 
         GameObject player;
         if (conn.connectionId == connectionID)
-            player = (GameObject)GameObject.Instantiate(prefab_player_child);
+            player = (GameObject)GameObject.Instantiate(prefabPlayerMonster);
         else
         {
             Vector3 pos = new Vector3();
             pos.x = Random.Range(-9f, 9f);
-            pos.y = prefab_player_monster.transform.position.y;
+            pos.y = prefabPlayerChild.transform.position.y;
             pos.z = Random.Range(-9f, 9f);
 
-            player = (GameObject)GameObject.Instantiate(prefab_player_monster, pos, prefab_player_monster.transform.rotation);
+            player = (GameObject)GameObject.Instantiate(prefabPlayerChild, pos, prefabPlayerChild.transform.rotation);
 
             // #TODO:
             Debug.Log("You can hear something entering the roooooom~!");
