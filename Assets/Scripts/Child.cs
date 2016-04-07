@@ -6,12 +6,13 @@ public class Child : NetworkObject
 {
     public float height = 1.5f;
     public GameObject sockPrefab;
-    
+
     int totalSocks = 20;
+    public static int currentSocks = 20;
 
 	override public void Start ()
     {
-        base.Start(); 
+        base.Start();
 
         if (!hasAuthority)
         {
@@ -30,6 +31,7 @@ public class Child : NetworkObject
                 
                 GameObject sock = (GameObject)GameObject.Instantiate(sockPrefab, pos, Random.rotation);
                 NetworkServer.Spawn(sock);
+                currentSocks++;
             }
         }
     }
@@ -48,15 +50,15 @@ public class Child : NetworkObject
     {
         // #TODO:
         Debug.Log("I cry everytime");
-        totalSocks--;
+        currentSocks--;
         FindObjectOfType<Monster>().EatSock();
 
-        if (totalSocks <= 2)
+        if (currentSocks <= 2)
         {
             // #TODO:
             Debug.Log("Q_Q");
 
-            if (totalSocks == 0)
+            if (currentSocks == 0)
                 GameManager.singleton.GameOver();
         }
     }

@@ -96,12 +96,19 @@ public class Monster : NetworkObject
 
     IEnumerator PlayHeartbeats()
     {
+        int beatcounter = 0;
         while (true)
         {
             yield return new WaitForSeconds(1f);
             audioSource.PlayOneShot(heartbeatSound);
 
-            Flash();
+            beatcounter++;
+
+            if (beatcounter > Child.currentSocks * 1.5f)
+            {
+                Flash();
+                beatcounter = 0;
+            }
         }
     }
 
