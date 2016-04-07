@@ -3,12 +3,25 @@ using System.Collections;
 
 public class ConeTrigger : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    void TriggerDetected(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // #TODO:
-            Debug.Log("You start seeing ... things!");
+            Monster kevin = other.GetComponent<Monster>();
+            if (kevin.eating)
+            {
+                Debug.Log("You start seeing ... things!");
+            }
         }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        TriggerDetected(other);
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        TriggerDetected(other);
     }
 }

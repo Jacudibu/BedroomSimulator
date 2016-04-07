@@ -49,6 +49,7 @@ public class Child : NetworkObject
         // #TODO:
         Debug.Log("I cry everytime");
         totalSocks--;
+        FindObjectOfType<Monster>().EatSock();
 
         if (totalSocks <= 2)
         {
