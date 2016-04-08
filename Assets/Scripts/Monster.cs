@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Monster : NetworkObject
 {
+    public bool spotted = false;
     public bool eating = false;
     public float speed = 5f;
 
@@ -133,5 +134,36 @@ public class Monster : NetworkObject
     {
         yield return new WaitForSeconds(2f);
         CameraFade.instance.FadeAndSendMessageAfterwards(Color.clear, "StartGame", FindObjectOfType<Child>());
+    }
+
+    public void Spotted()
+    {
+        spotted = true;
+
+        StopAllCoroutines();
+
+        StartCoroutine(SetVisibility(1f));
+        StartCoroutine(SpottedCoroutine());
+    }
+
+    IEnumerator SpottedCoroutine()
+    {
+        float progress = 0f;
+        syncRotation = false;
+        syncPosition = false;
+
+        eating = true;
+
+        while (progress < 1f)
+        {
+            transform.Rotate(0f, Time.deltaTime * 1000f * progress, 0f);
+            transform.localScale = new Vector3(1f - (progress * progress), 1f, 1f - (progress * progress));
+
+            progress += Time.deltaTime * 0.2f;
+            yield return new WaitForEndOfFrame();
+        }
+
+        transform.localScale = new Vector3(0f, 1f, 0f);
+        GameManager.singleton.GameOver(true);
     }
 }

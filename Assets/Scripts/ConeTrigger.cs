@@ -3,15 +3,28 @@ using System.Collections;
 
 public class ConeTrigger : MonoBehaviour
 {
+    float timer = 0f;
+    bool visible = false;
+
+    void Update()
+    {
+        if (visible)
+            timer += Time.deltaTime;
+        else
+            timer -= Time.deltaTime;
+
+        timer = Mathf.Clamp01(timer);
+    }
+
     void TriggerDetected(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             Monster kevin = other.GetComponent<Monster>();
-            if (kevin.eating)
-            {
-                Debug.Log("You start seeing ... things!");
-            }
+            visible = kevin.eating;
+
+            if (timer > 0.5f && !kevin.spotted)
+                kevin.Spotted();
         }
     }
 
@@ -23,5 +36,11 @@ public class ConeTrigger : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         TriggerDetected(other);
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            visible = false;
     }
 }

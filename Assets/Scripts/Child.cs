@@ -59,8 +59,8 @@ public class Child : NetworkObject
             // #TODO:
             Debug.Log("Q_Q");
 
-            if (currentSocks == 0)
-                GameManager.singleton.GameOver();
+            if (currentSocks == 1)
+                GameManager.singleton.GameOver(false);
         }
     }
 

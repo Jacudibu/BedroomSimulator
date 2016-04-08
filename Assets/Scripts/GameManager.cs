@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         MonsterCamera.SetActive(true);
     }
 
-    public void GameOver()
+    public void GameOver(bool childHasWon)
     {
         if (SuperNetworkManager.isServer)
             SuperNetworkManager.singleton.StopHost();
