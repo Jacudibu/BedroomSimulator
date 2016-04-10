@@ -1,18 +1,28 @@
-Shader "Toon/LitAlpha" {
-	Properties {
+Shader "Toon/Lit Alpha" {
+	Properties 
+	{
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {} 
 	}
 
-	SubShader {
-		Tags { "RenderType"="Opaque" "Queue" = "Transparent"}
-		LOD 200
+	SubShader 
+	{
+	Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+
+		
+	// extra pass that renders to depth buffer only
+	Pass 
+	{
+		ZWrite On
+		ColorMask 0
+	}
 		
 CGPROGRAM
-#pragma surface surf ToonRamp
+#pragma surface surf ToonRamp alpha:blend
 
 sampler2D _Ramp;
+
 
 // custom lighting function that uses a texture ramp based
 // on angle between light direction and normal
@@ -28,7 +38,7 @@ inline half4 LightingToonRamp (SurfaceOutput s, half3 lightDir, half atten)
 	
 	half4 c;
 	c.rgb = s.Albedo * _LightColor0.rgb * ramp * (atten * 2);
-	c.a = 0;
+	c.a = s.Alpha;
 	return c;
 }
 
@@ -43,7 +53,7 @@ struct Input {
 void surf (Input IN, inout SurfaceOutput o) {
 	half4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 	o.Albedo = c.rgb;
-	o.Alpha = c.a;
+	o.Alpha = _Color.a;
 }
 ENDCG
 
