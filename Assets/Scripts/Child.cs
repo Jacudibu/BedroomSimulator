@@ -25,11 +25,11 @@ public class Child : NetworkObject
             for (int i = 0; i < totalSocks; i++)
             {
                 Vector3 pos = new Vector3();
-                pos.x = Random.Range(-9f, 9f);
-                pos.y = 0.3f;
-                pos.z = Random.Range(-9f, 9f);
+                pos.x = Random.Range(-8f, 8f);
+                pos.y = 0.1f;
+                pos.z = Random.Range(-8f, 8f);
                 
-                GameObject sock = (GameObject)GameObject.Instantiate(sockPrefab, pos, Random.rotation);
+                GameObject sock = (GameObject)GameObject.Instantiate(sockPrefab, pos, Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
                 NetworkServer.Spawn(sock);
             }
         }
