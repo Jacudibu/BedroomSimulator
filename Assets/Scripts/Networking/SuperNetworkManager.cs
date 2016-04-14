@@ -152,9 +152,12 @@ public class SuperNetworkManager : NetworkManager
         else
         {
             Vector3 pos = new Vector3();
-            pos.x = Random.Range(-9f, 9f);
-            pos.y = prefabPlayerMonster.transform.position.y;
-            pos.z = Random.Range(-9f, 9f);
+            do
+            {   // Set new Position until we aren't spawned inside anything!
+                pos.x = Random.Range(-9f, 9f);
+                pos.y = prefabPlayerMonster.transform.position.y;
+                pos.z = Random.Range(-9f, 9f);
+            } while (Physics.CheckSphere(pos, 2f, LayerMask.GetMask("HierNixSpawnen")));
 
             player = (GameObject)GameObject.Instantiate(prefabPlayerMonster, pos, prefabPlayerMonster.transform.rotation);
 

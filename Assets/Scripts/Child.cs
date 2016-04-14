@@ -25,10 +25,13 @@ public class Child : NetworkObject
             for (int i = 0; i < totalSocks; i++)
             {
                 Vector3 pos = new Vector3();
-                pos.x = Random.Range(-8f, 8f);
-                pos.y = 0.1f;
-                pos.z = Random.Range(-8f, 8f);
-                
+                do
+                {
+                    pos.x = Random.Range(-8f, 8f);
+                    pos.y = 0.1f;
+                    pos.z = Random.Range(-8f, 8f);
+                } while (Physics.CheckSphere(pos, 0.5f, LayerMask.GetMask("HierNixSpawnen")));
+
                 GameObject sock = (GameObject)GameObject.Instantiate(sockPrefab, pos, Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
                 NetworkServer.Spawn(sock);
             }
@@ -44,7 +47,8 @@ public class Child : NetworkObject
         if (!hasAuthority)
             return;
 
-        transform.Rotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0f);
+        if (!UnityEngine.VR.VRDevice.isPresent)
+            transform.Rotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0f);
 	}
 
     [ClientRpc] public void RpcSockWasSnatched()

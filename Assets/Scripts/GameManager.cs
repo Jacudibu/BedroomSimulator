@@ -25,11 +25,15 @@ public class GameManager : MonoBehaviour
 
     void InitHost()
     {
-
+        if (UnityEngine.VR.VRDevice.isPresent)
+        {
+            UnityEngine.VR.VRSettings.enabled = true;
+        }
     }
 
     void InitClient()   
     {
+        UnityEngine.VR.VRSettings.enabled = false;
         MonsterCamera.SetActive(true);
     }
 
@@ -44,6 +48,5 @@ public class GameManager : MonoBehaviour
     void OnDestroy()
     {
         UnityEngine.VR.VRSettings.enabled = false;
-        UnityEngine.VR.VRSettings.loadedDevice = UnityEngine.VR.VRDeviceType.None;
     }
 }

@@ -12,6 +12,8 @@ public class NetworkUI : MonoBehaviour
     void Start()
     {
         ipInput.onEndEdit.AddListener(SetIP);
+
+        ipInput.gameObject.SetActive(!useBroadcast);
     }
 
     void OnLevelWasLoaded(int id)
