@@ -33,7 +33,7 @@ public class Child : NetworkObject
                 } while (Physics.CheckSphere(pos, 0.5f, LayerMask.GetMask("HierNixSpawnen")));
 
                 GameObject sock = (GameObject)GameObject.Instantiate(sockPrefab, pos, Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
-                sock.GetComponent<Material>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+                sock.GetComponentInChildren<Renderer>().material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
 
                 NetworkServer.Spawn(sock);
             }
