@@ -4,12 +4,25 @@ using System.Collections;
 
 public class NetworkUI : MonoBehaviour
 {
+    public bool useBroadcast;
+    SuperNetworkDiscovery networkDiscovery;
 
     [SerializeField] InputField ipInput;
 
     void Start()
     {
         ipInput.onEndEdit.AddListener(SetIP);
+    }
+
+    void OnLevelWasLoaded(int id)
+    {
+        // On return to main menu, stop broadcasting
+        if (id == 0 && useBroadcast)
+        {
+            networkDiscovery = FindObjectOfType<SuperNetworkDiscovery>();
+            if (networkDiscovery.running)
+                networkDiscovery.StopBroadcast();
+        }
     }
 
 	// --------------------------
@@ -29,11 +42,29 @@ public class NetworkUI : MonoBehaviour
     public void StartHost()
     {
         SuperNetworkManager.singleton.StartHost();
+
+        if (networkDiscovery == null)
+        {
+            networkDiscovery = FindObjectOfType<SuperNetworkDiscovery>();
+        }
+
+        networkDiscovery.Initialize();
+        networkDiscovery.StartAsServer();
     }
 
     public void StartClient()
     {
-        SuperNetworkManager.singleton.StartClient();
+        if (!useBroadcast)
+            SuperNetworkManager.singleton.StartClient();
+        else
+        {
+            if (networkDiscovery == null)
+            {
+                networkDiscovery = FindObjectOfType<SuperNetworkDiscovery>();
+            }
+            networkDiscovery.Initialize();
+            networkDiscovery.StartAsClient();
+        }
     }
 
     public void Disconnect()

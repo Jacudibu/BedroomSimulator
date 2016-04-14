@@ -176,7 +176,10 @@ public class SuperNetworkManager : NetworkManager
         {
             // #TODO:
             Debug.Log("Something ran away....");
-            NetworkServer.Destroy(FindObjectOfType<Monster>().gameObject);
+
+            if (FindObjectOfType<Monster>() != null)
+                NetworkServer.Destroy(FindObjectOfType<Monster>().gameObject);
+
             StopHost();
         }
     }

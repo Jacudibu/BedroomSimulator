@@ -92,6 +92,9 @@ public class Monster : NetworkObject
 
     IEnumerator SetVisibility(float targetAlpha, float speed = 3f)
     {
+        if (mat == null)
+            mat = rend.material;
+
         Color start = mat.color;
         Color target = start;
         target.a = targetAlpha;
