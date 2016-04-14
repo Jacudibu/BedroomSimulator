@@ -7,9 +7,17 @@ public class BioHarness : MonoBehaviour
 {
     SerialPort port;
 
+    private static CircularBuffer buffer = new CircularBuffer(10, 70);
+    public static float HeartRate
+    {
+        get { return buffer.getAverage(); }
+    }
+
+
     void Start()
     {
-        port = new SerialPort("COM5", 115200, Parity.None, 8, StopBits.One);
+
+        port = new SerialPort("COM8", 115200, Parity.None, 8, StopBits.One);
         port.Handshake = Handshake.None;
         port.ReadTimeout = 2000;
         port.Open();
@@ -26,6 +34,7 @@ public class BioHarness : MonoBehaviour
         Debug.Log(a);
 
         StartCoroutine("Reader");
+
     }
 
     IEnumerator Reader()
@@ -44,12 +53,14 @@ public class BioHarness : MonoBehaviour
                 Debug.Log(a);
                 if (answer[1] == 0x2b)
                 {
-                    //Debug.Log(answer[12].ToString());
-                    Debug.Log(answer[13].ToString());
+                    buffer.push((int)answer[13]);
                 }
             }
-            catch (TimeoutException)
-            { Debug.Log("catched"); }
+            catch (Exception e)
+            {
+                Debug.Log("Yolo, we got an Exception: "+ e);
+                buffer = new CircularBuffer(10, 70f);
+            }
 
             yield return new WaitForSeconds(1f);
         }

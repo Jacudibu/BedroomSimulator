@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
 public class Monster : NetworkObject
@@ -18,6 +19,9 @@ public class Monster : NetworkObject
     private Animator animator;
 
     Vector3 lastPos;
+
+    [SyncVar]
+    public float averageHeartbeat = 70;
 
     public override void Start ()
     {
@@ -45,7 +49,12 @@ public class Monster : NetworkObject
         animator.SetFloat("Speed", (transform.position - lastPos).magnitude);
         lastPos = transform.position;
 
-        if (!hasAuthority || eating)
+        if (!hasAuthority)
+            return;
+
+        CmdUpdateHeartate(BioHarness.HeartRate);
+
+        if (eating)
             return;
 
         Vector3 movement = Vector3.zero;
@@ -127,7 +136,7 @@ public class Monster : NetworkObject
         int beatcounter = 0;
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(Mathf.Clamp(70f / averageHeartbeat, 0.2f, 10f));
             audioSource.PlayOneShot(heartbeatSound);
 
             beatcounter++;
@@ -175,5 +184,11 @@ public class Monster : NetworkObject
 
         transform.localScale = new Vector3(0f, 1f, 0f);
         GameManager.singleton.GameOver(true);
+    }
+
+    [Command]
+    void CmdUpdateHeartate(float value)
+    {
+        averageHeartbeat = value;
     }
 }
