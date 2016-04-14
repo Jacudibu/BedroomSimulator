@@ -97,7 +97,12 @@ public class Monster : NetworkObject
 
         Color start = mat.color;
         Color target = start;
+
+        Color startOutline = mat.GetColor("_OutlineColor");
+        Color targetOutline = Color.black;
+
         target.a = targetAlpha;
+        targetOutline.a = targetAlpha;
 
         if (hasAuthority) // are we the monster?
             target.a += 0.5f;
@@ -107,12 +112,14 @@ public class Monster : NetworkObject
         while (progress < 1)
         {
             mat.color = Color.Lerp(start, target, progress);
+            mat.SetColor("_OutlineColor", Color.Lerp(startOutline, targetOutline, progress));
             progress += Time.deltaTime * speed;
 
             yield return new WaitForEndOfFrame();
         }
 
         mat.color = target;
+        mat.SetColor("_OutlineColor", targetOutline);
     }
 
     IEnumerator PlayHeartbeats()
