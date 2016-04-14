@@ -40,9 +40,19 @@ public class GameManager : MonoBehaviour
     public void GameOver(bool childHasWon)
     {
         if (SuperNetworkManager.isServer)
-            SuperNetworkManager.singleton.StopHost();
+        {
+            if (childHasWon)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("End_PlayerWin");
+            else
+                UnityEngine.SceneManagement.SceneManager.LoadScene("End_PlayerLoose");
+        }
         else
-            SuperNetworkManager.singleton.StopClient();
+        {
+            if (childHasWon)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("End_MonsterLoose");
+            else
+                UnityEngine.SceneManagement.SceneManager.LoadScene("End_MonsterWin");
+        }
     }
 
     void OnDestroy()

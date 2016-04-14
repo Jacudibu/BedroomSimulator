@@ -28,11 +28,13 @@ public class Child : NetworkObject
                 do
                 {
                     pos.x = Random.Range(-8f, 8f);
-                    pos.y = 0.1f;
+                    pos.y = 0f;
                     pos.z = Random.Range(-8f, 8f);
                 } while (Physics.CheckSphere(pos, 0.5f, LayerMask.GetMask("HierNixSpawnen")));
 
                 GameObject sock = (GameObject)GameObject.Instantiate(sockPrefab, pos, Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
+                sock.GetComponent<Material>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+
                 NetworkServer.Spawn(sock);
             }
         }

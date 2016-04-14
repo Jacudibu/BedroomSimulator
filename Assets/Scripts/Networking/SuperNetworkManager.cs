@@ -144,7 +144,7 @@ public class SuperNetworkManager : NetworkManager
     IEnumerator SpawnPlayerObject(NetworkConnection conn)
     {
         didInit = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
 
         GameObject player;
         if (conn.connectionId == connectionID)
