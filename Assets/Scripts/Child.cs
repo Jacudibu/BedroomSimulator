@@ -37,6 +37,9 @@ public class Child : NetworkObject
 
                 NetworkServer.Spawn(sock);
             }
+
+            //Play snoring sound effect
+            GetComponent<AudioSource>().Play();
         }
 
         currentSocks = totalSocks;
@@ -72,6 +75,9 @@ public class Child : NetworkObject
 
     public void StartGame()
     {
+        //Stop playing snoring sound effect (but finish playing the last loop)
+        GetComponent<AudioSource>().loop = false;
+
         StartCoroutine(SetFlashlight(true, 1.5f));
     }
 
