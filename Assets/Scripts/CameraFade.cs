@@ -93,6 +93,7 @@ public class CameraFade : MonoBehaviour
     {
         yield return FadeFromTo(texture.color, targetColor);
 
-        messageTarget.SendMessage(methodName);
+        if (messageTarget != null)
+            messageTarget.SendMessage(methodName);
     }
 }
