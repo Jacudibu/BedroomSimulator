@@ -9,20 +9,31 @@ public class Mouse : MonoBehaviour
     public float speed;
     public Vector2 direction;
 
-    AudioSource audioSource;
+    private AudioSource audioSource;
+    private Child child;
+    private Rect activeArea;
 
     void Start()
     {
+        //set up component references
         audioSource = GetComponent<AudioSource>();
+        child = FindObjectOfType<Child>();
+
+        activeArea = child.spawnArea;
 
         //start making noises
-        StartCoroutine("NoiseCoroutine");
+        StartCoroutine(NoiseCoroutine());
 	}
 
     void Update()
     {
         //movement
         transform.Translate(speed * new Vector3(direction.x, 0, direction.y) * Time.deltaTime, Space.World);
+
+        if (isOutside())
+        {
+            child.UnspawnMouse(this.gameObject);
+        }
 	}
 
     IEnumerator NoiseCoroutine()
@@ -36,5 +47,12 @@ public class Mouse : MonoBehaviour
 
             yield return new WaitForSeconds(nextDelay);
         }
+    }
+
+    private bool isOutside()
+    {
+        Vector3 pos = transform.position;
+
+        return (pos.x < activeArea.xMin) || (pos.x > activeArea.xMax) || (pos.z < activeArea.yMin) || (pos.z > activeArea.yMax); 
     }
 }

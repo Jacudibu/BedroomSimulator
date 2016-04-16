@@ -103,20 +103,11 @@ public class Child : NetworkObject
     {
         yield return new WaitForSeconds(10.0f);
 
-        GameObject spawnedMouse = null;
-
         while (hasAuthority)
         {
-            float nextDelay = Random.Range(30.0f, 60.0f);
+            float nextDelay = Random.Range(20.0f, 40.0f);
 
-            if (spawnedMouse != null)
-            {
-                //delete the mouse
-                NetworkServer.UnSpawn(spawnedMouse);
-                GameObject.Destroy(spawnedMouse);
-            }
-
-            spawnedMouse = spawnMouse();
+            spawnMouse();
 
             yield return new WaitForSeconds(nextDelay);
         }
@@ -131,7 +122,7 @@ public class Child : NetworkObject
 
         Vector2 spawnPos = Vector2.zero;
         Vector2 dir = Vector2.zero;
-        float z_angle = 0;
+        float y_angle = 0;
 
         switch (side)
         {
@@ -139,40 +130,40 @@ public class Child : NetworkObject
             case 0:
                 {
                     spawnPos.x = spawnArea.xMin;
-                    spawnPos.y = spawnArea.height * length;
+                    spawnPos.y = spawnArea.yMin + spawnArea.height * length;
 
                     dir = new Vector2(1, 0);
-                    z_angle = 90;
+                    y_angle = 90;
                     break;
                 }
             //right
             case 1:
                 {
                     spawnPos.x = spawnArea.xMax;
-                    spawnPos.y = spawnArea.height * length;
+                    spawnPos.y = spawnArea.yMin + spawnArea.height * length;
 
                     dir = new Vector2(-1, 0);
-                    z_angle = 270;
+                    y_angle = 270;
                     break;
                 }
             //top
             case 2:
                 {
-                    spawnPos.x = spawnArea.width * length;
+                    spawnPos.x = spawnArea.xMin + spawnArea.width * length;
                     spawnPos.y = spawnArea.yMax;
 
                     dir = new Vector2(0, -1);
-                    z_angle = 180;
+                    y_angle = 180;
                     break;
                 }
             //bottom
             case 3:
                 {
-                    spawnPos.x = spawnArea.width * length;
+                    spawnPos.x = spawnArea.xMin + spawnArea.width * length;
                     spawnPos.y = spawnArea.yMin;
 
                     dir = new Vector2(0, 1);
-                    z_angle = 0;
+                    y_angle = 0;
                     break;
                 }
         }
@@ -181,10 +172,17 @@ public class Child : NetworkObject
         //actually spawn
         GameObject mouse = (GameObject)GameObject.Instantiate(mousePrefab, new Vector3(spawnPos.x, 0, spawnPos.y), Quaternion.identity);
         mouse.GetComponent<Mouse>().direction = dir;
-        mouse.transform.eulerAngles = new Vector3(mouse.transform.eulerAngles.x, mouse.transform.eulerAngles.y, z_angle);
+        mouse.transform.localEulerAngles = new Vector3(mousePrefab.transform.localEulerAngles.x, y_angle, mousePrefab.transform.localEulerAngles.z);
 
         NetworkServer.Spawn(mouse);
 
         return mouse;
+    }
+
+    public void UnspawnMouse(GameObject mouse)
+    {
+        //delete the mouse
+        NetworkServer.UnSpawn(mouse);
+        GameObject.Destroy(mouse);
     }
 }
